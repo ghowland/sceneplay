@@ -1,0 +1,726 @@
+#locations:
+#- walkable
+#- unwalkable
+#- hard edges
+#  surface: slick
+#- doors/portals
+#  - location: roomX
+#  - location_position: [0, 10]
+#- hard ceiling (ceiling, prevents jumps or any other movement)
+#- soft ceiling (ceiling, but jumps can go through them)
+
+
+game:
+  initial_location: ow_high_school
+  color_key: 0
+  player_actor: actor.fighter
+
+  # Check the Random Seed to get different results
+  #TODO(g): This must be adjustable in the editor, PER SCENE, so that I can re-roll scenes and get
+  #   better results.  Then each scene can be re-rolled and that state will be saved without effecting
+  #   any other scenes!!!!!
+  random_seed: 0
+
+
+window:
+  title: Rivers of Blood
+  size: [1020, 680]
+  #size: [640, 480]
+
+  # Video rendering target.  The main rendering workspace, not for helper UI.
+  viewport size: [640, 480]
+
+  # UI bar on right side of screen (for now, right is better?), runs from top to bottom of full window
+  sidebar size: [400, 680]
+
+  # UI bar beneath the video screen, stops at sidebar.  Aligns with width of the video screen
+  bottombar size: [640, 200]
+
+  # Increase in game graphics sizing
+  scale: 3.0
+
+
+screenplay: data/rob_screenplay.yaml
+
+
+location.ow_high_school:
+  render:
+    #- Game Background
+    #- Game Actors
+    #- Game UI
+    - Screenplay
+    - Sidebar UI
+    - Bottombar UI
+    - Popup UI
+
+  assets:
+    background:
+      images: ["data/images/rivercity-school.gif"]
+      #images: ["data/images/rivercity-park.gif"]
+      frames: [[0,0]]
+      loop: none
+
+      masks:
+        # Masks where there is ground to stand on.  Walls will not be ground, except
+        #   where one can stand on them.
+        walkable:
+          images: ["data/images/rivercity-school-mask.gif"]
+          #images: ["data/images/rivercity-park-mask.gif"]
+          palette:
+            0: sky
+            1: walkable
+            2: fallable
+            3: unwalkable
+            4: unknown
+            5: landable
+
+
+actor.fighter:
+
+  location: ow_high_school
+
+  position: [100, 350]
+
+  money: 5
+
+  stats:
+    strength: 1
+    dexterity: 1
+    intelligence: 1
+    wisdom: 1
+    constitution: 1
+    charisma: 1
+
+  attributes:
+    health: 20
+    mana: 20
+    initiative: 5
+
+  attribute_modifiers:
+    damage:
+      health: -5
+
+  stat_modifiers:
+    gypsy_curse:
+      constitution: -1
+      duration: 200
+
+  state:
+    action: stand
+    direction: [1, 0]
+
+  asset_sets: [fighter]
+
+  quests: {}
+
+  achievements: {}
+
+  #TODO(g): Run through the startup script, and allow for quit or playing
+  #   interactively after that.
+  script:
+    # If present, the actor will run through this script on startup
+    startup:
+      - stand:
+        duration: 1
+      - walk:
+        direction: [1, 0]
+        duration: 2
+      - run:
+        direction: [1, 0]
+        duration: 2
+      - jump:
+        duration: 1.5
+      - punch:
+        repeat: 3
+      - stand:
+        duration: 2
+
+
+  # Controls for actions
+  controls:
+    left:
+      action: walk
+      direction: [-1, 0]
+    right:
+      action: walk
+      direction: [1, 0]
+    up:
+      action: walk
+      direction: [0, -1]
+    down:
+      action: walk
+      direction: [0, 1]
+
+    left+up:
+      action: walk
+      direction: [-1, -1]
+    right+up:
+      action: walk
+      direction: [1, -1]
+
+    left+left:
+      action: run
+      direction: [-1, 0]
+    right+right:
+      action: run
+      direction: [1, 0]
+
+    button1:
+      action: punch
+
+    button2:
+      action: kick
+
+    button1+button2:
+      action: jump
+
+    button1+button2+up:
+      action: jump_up
+
+  # Actions, and their overrides
+  #
+  # Play it loose.  Like BM:AA, but chaining things, all the time, just more
+  #   chains.  >>, sends a run burst, then uppercut, then >> and run more,
+  #   and keep on chaining moves in advance of your character, trying to
+  #   time them all as theyre flying all over the place.  RAD!
+  #
+  # Turns it into a real show, and trying to time things in advance.  Totally
+  #   will improve network play, and allow more people to play, because moves
+  #   are lagged, but synced, for everyone.
+  #
+  # Can cheoreograph fights with scripting system, so that I can test that the
+  #   logic will work well.  By the time it looks good, input mapping should
+  #   be able to make them do the moves as well.
+  #
+  # Allow direct controls, and stacked.  Shouldnt be too difficult to abstract
+  #   and just make a menu or start button to switch.  Unless people do it
+  #   often.  Mapped button for this would be best.
+  actions:
+    walk:
+      incoming:
+        run:
+          action: run
+        change_horizontal_direction:
+          action: walk
+
+
+
+asset_set.fighter:
+  stand:
+    images: ["data/images/alex/alex_stand_0.png"]
+    directions: [[1, 0]]
+    offset: [-55, -34]
+    loop: none
+    speed: still
+    movement: still
+
+  walk:
+    images: ["data/images/alex/alex_walk_0.png", "data/images/alex/alex_walk_1.png"]
+    directions: [[1, 0], [1, 0]]
+    offset: [-55, -34]
+    loop: repeat
+    speed: slow
+    movement: slow
+    finish: stand
+
+  run: 
+    images: ["data/images/alex/alex_walk_0.png", "data/images/alex/alex_walk_1.png", "data/images/alex/alex_run_0.png"]
+    directions: [[1, 0], [1, 0], [1, 0]]
+    offset: [-55, -34]
+    loop: repeat
+    speed: fast
+    movement: fast
+    finish: stand
+
+  block:
+    images: ["data/images/alex/alex_block_0.png"]
+    directions: [[1, 0]]
+    offset: [-55, -34]
+    loop: none
+    speed: still
+    movement: still
+    duration: 500
+
+  jump:
+    images: ["data/images/alex/alex_fall_0.png"]
+    directions: [[1, 0]]
+    offset: [-55, -34]
+    loop: none
+    speed: still
+    movement: still
+
+  land:
+    images: ["data/images/alex/alex_crouch_0.png"]
+    directions: [[1, 0]]
+    offset: [-55, -34]
+    loop: none
+    speed: still
+    movement: still
+
+  punch:
+    images: ["data/images/alex/alex_punch_0.png", "data/images/alex/alex_punch_1.png", "data/images/alex/alex_punch_2.png"]
+    directions: [[1, 0], [1, 0], [1, 0]]
+    offset: [-55, -34]
+    loop: once
+    speed: fast
+    movement: still
+    finish: stand
+
+
+  running_punch: 
+    images: ["data/images/alex/alex_run_punch_0.png", "data/images/alex/alex_run_punch_1.png"]
+    directions: [[1, 0], [1, 0]]
+    offset: [-55, -34]
+    loop: once
+    speed: fast
+    movement: fast
+    finish: run
+
+  uppercut:
+    images: ["data/images/alex/alex_uppercut_0.png", "data/images/alex/alex_uppercut_1.png", "data/images/alex/alex_uppercut_2.png"]
+    directions: [[1, 0], [1, 0], [1, 0]]
+    offset: [-55, -34]
+    loop: none
+    speed: still
+    movement: still
+
+  kick:
+    images: ["data/images/alex/alex_kick_0.png", "data/images/alex/alex_kick_1.png", "data/images/alex/alex_kick_2.png"]
+    directions: [[1, 0], [1, 0], [1, 0]]
+    offset: [-55, -34]
+    loop: none
+    speed: still
+    movement: still
+
+  kick_high:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[0,2], [1,2], [3,2], ]
+    loop: none
+    speed: still
+    movement: still
+
+  kick_med_high:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[0,2], [1,2], [2, 2], [3,2], ]
+    loop: none
+    speed: still
+    movement: still
+
+  kick_jump:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[4,2]]
+    loop: none
+    speed: still
+    movement: still
+
+  roll:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[5,2], [6,2], [7, 2], [8,2], ]
+    loop: none
+    speed: still
+    movement: still
+
+  swing:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[0,3], [1,3], [2,3], ]
+    loop: none
+    speed: still
+    movement: still
+
+  swing_run:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[3,3]]
+    loop: none
+    speed: still
+    movement: still
+    finish: run
+
+  stand_hold:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[4,3]]
+    loop: none
+    speed: still
+    movement: still
+
+  walk_hold:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[5,3], [6,3]]
+    loop: none
+    speed: still
+    movement: still
+
+  run_hold:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames:  [[5,3], [6,3], [7,3]]
+    loop: none
+    speed: still
+    movement: still
+
+  throw_hold: 
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[8,3], [9,3]]
+    loop: none
+    speed: still
+    movement: still
+
+  jump_hold:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[10,3]]
+    loop: none
+    speed: still
+    movement: still
+
+  hit_forward_hard:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[0,4]]
+    loop: none
+    speed: still
+    movement: still
+
+  hit_forward:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[1,4]]
+    loop: none
+    speed: still
+    movement: still
+
+  hit_back:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[2,4]]
+    loop: none
+    speed: still
+    movement: still
+
+  hit_back_hard:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[3,4]]
+    loop: none
+    speed: still
+    movement: still
+
+  fall_forward:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[4,4]]
+    loop: none
+    speed: still
+    movement: still
+
+  pant: 
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[5,4], [6,4]]
+    loop: none
+    speed: still
+    movement: still
+
+  down:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[7,4]]
+    loop: none
+    speed: still
+    movement: still
+
+  down_eyes:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[8,4]]
+    loop: none
+    speed: still
+    movement: still
+
+  pose_finger_up_mouth_straight:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[0,5]]
+    loop: none
+    speed: still
+    movement: still
+
+  pose_finger_up_mouth_open:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[1,5]]
+    loop: none
+    speed: still
+    movement: still
+
+  pose_not_aggressive:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[2,5]]
+    loop: none
+    speed: still
+    movement: still
+
+  pose_look_behind:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[3,5]]
+    loop: none
+    speed: still
+    movement: still
+
+  pose_look_squint:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[4,5]]
+    loop: none
+    speed: still
+    movement: still
+
+  pose_look_squint_front:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[5,5]]
+    loop: none
+    speed: still
+    movement: still    
+
+  pose_look_down:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[6,5]]
+    loop: none
+    speed: still
+    movement: still
+    
+  pose_look_hard:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[7,5]]
+    loop: none
+    speed: still
+    movement: still
+    
+  sit_finger_up_mouth_straight:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[0,6]]
+    loop: none
+    speed: still
+    movement: still
+    
+  sit_finger_up_mouth_open:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[1,6]]
+    loop: none
+    speed: still
+    movement: still
+    
+  sit_mouth_open:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[2,6]]
+    loop: none
+    speed: still
+    movement: still
+    
+  sit_look_behind:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[3,6]]
+    loop: none
+    speed: still
+    movement: still
+    
+  sit_look_squint:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[4,6]]
+    loop: none
+    speed: still
+    movement: still
+    
+  sit_look_squint_forward:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[5,6]]
+    loop: none
+    speed: still
+    movement: still
+    
+  sit_look_down:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[6,6]]
+    loop: none
+    speed: still
+    movement: still
+    
+  sit_look_down_mouth_open:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[7,6]]
+    loop: none
+    speed: still
+    movement: still
+    
+  sit_chew: 
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[0,7], [1,7], [2,7], [3,7], [4,7], [5,7], ]
+    loop: none
+    speed: still
+    movement: still
+    
+  sit_bite_back:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[6,7]]
+    loop: none
+    speed: still
+    movement: still
+    
+  stand_chew: 
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[0,8], [1,8], [2,7], [3,8], [4,8], [5,8], ]
+    loop: none
+    speed: still
+    movement: still
+    
+  stand_grab:
+    images: ["data/images/alex.png"]
+    frame_size: [39, 39]
+    frames: [[6,8]]
+    loop: none
+    speed: still
+    movement: still
+    
+  
+
+
+device.keyboard:
+  input:
+    space:
+      action: start
+    up:
+      action: up
+    down:
+      action: down
+    left:
+      action: left
+    right:
+      action: right
+    ctrl:
+      action: punch
+    alt:
+      action: kick
+    ctrl+alt:
+      action: jump
+
+
+
+
+input_map.rcr:
+
+  input_processing_code:
+    - input_process_rcr.py
+
+  inputs: #TODO: Indent all this shit below
+    stand:
+      action: stand
+      move: [0, 0]
+    up:
+      if:
+        not:
+          action: run
+
+        set:
+          action: walk
+
+      move: [0, -1]
+    down:
+      if:
+        not:
+          action: run
+
+        set:
+          action: walk
+
+      move: [0, 1]
+    left:
+      action: walk
+      move: [-1, 0]
+    up+left:
+      action: walk
+      move: [-1, -1]
+    down+left:
+      action: walk
+      move: [-1, 1]
+    left+left:
+      action: run
+      move: [-1, 0]
+    up+right:
+      action: walk
+      move: [1, -1]
+    down+right:
+      action: walk
+      move: [1, 1]
+    right:
+      action: walk
+      move: [1, 0]
+    right+right:
+      action: run
+      move: [1, 0]
+    punch:
+      action: punch
+      move: [0, 0]
+    kick:
+      action: kick
+      move: [0, 0]
+    jump:
+      action: jump
+      move: [0, 0]
+
+
+input_map.soul_caliber_combos:
+  up+up:
+    standing:
+      action: sidestep
+      direction: clockwise
+    laying:
+      action: roll
+      direction: clockwise
+  down+down:
+    standing:
+      action: sidestep
+      direction: counter-clockwise
+    laying:
+      action: roll
+      direction: counter-clockwise
+  left:
+    action: advance
+  right:
+    action: retreat
+  punch:
+    action: punch
+  kick:
+    action: kick
+  jump:
+    action: jump
+
+
+
+
+
+
+

@@ -1,0 +1,429 @@
+stand:
+  images: ["data/images/alex/alex_stand_0.png"]
+  directions: [[1, 0]]
+  offset: [-55, -34]
+  loop: none
+  speed: still
+  movement: still
+  period: 1.0
+
+walk:
+  images: ["data/images/alex/alex_walk_0.png", "data/images/alex/alex_walk_1.png"]
+  directions: [[1, 0], [1, 0]]
+  offset: [-55, -34]
+  loop: repeat
+  speed: slow
+  movement: slow
+  finish: stand
+  period: 0.5
+
+run: 
+  images: ["data/images/alex/alex_walk_0.png", "data/images/alex/alex_walk_1.png", "data/images/alex/alex_run_0.png"]
+  directions: [[1, 0], [1, 0], [1, 0]]
+  offset: [-55, -34]
+  loop: repeat
+  speed: fast
+  movement: fast
+  finish: stand
+  period: 0.4
+
+block:
+  images: ["data/images/alex/alex_block_0.png"]
+  directions: [[1, 0]]
+  offset: [-55, -34]
+  loop: none
+  speed: still
+  movement: still
+  duration: 500
+  period: 0.5
+
+jump:
+  images: ["data/images/alex/alex_fall_0.png"]
+  directions: [[1, 0]]
+  offset: [-55, -34]
+  loop: none
+  speed: still
+  movement: still
+  period: 0.5
+
+land:
+  images: ["data/images/alex/alex_crouch_0.png"]
+  directions: [[1, 0]]
+  offset: [-55, -34]
+  loop: none
+  speed: still
+  movement: still
+  period: 0.5
+
+punch:
+  images: ["data/images/alex/alex_punch_0.png", "data/images/alex/alex_punch_1.png", "data/images/alex/alex_punch_2.png"]
+  directions: [[1, 0], [1, 0], [1, 0]]
+  offset: [-55, -34]
+  loop: once
+  speed: fast
+  movement: still
+  finish: stand
+  period: 0.5
+
+
+running_punch: 
+  images: ["data/images/alex/alex_run_punch_0.png", "data/images/alex/alex_run_punch_1.png"]
+  directions: [[1, 0], [1, 0]]
+  offset: [-55, -34]
+  loop: once
+  speed: fast
+  movement: fast
+  finish: run
+  period: 0.5
+
+uppercut:
+  images: ["data/images/alex/alex_uppercut_0.png", "data/images/alex/alex_uppercut_1.png", "data/images/alex/alex_uppercut_2.png"]
+  directions: [[1, 0], [1, 0], [1, 0]]
+  offset: [-55, -34]
+  loop: none
+  speed: still
+  movement: still
+  period: 0.5
+
+kick:
+  images: ["data/images/alex/alex_kick_0.png", "data/images/alex/alex_kick_1.png", "data/images/alex/alex_kick_2.png"]
+  directions: [[1, 0], [1, 0], [1, 0]]
+  offset: [-55, -34]
+  loop: none
+  speed: still
+  movement: still
+  period: 0.5
+
+
+hit_forward_hard:
+  images: ["data/images/alex/alex_hit_forward_hard.png"]
+  directions: [[1, 0]]
+  offset: [-55, -34]
+  loop: none
+  speed: still
+  movement: still
+  period: 0.5
+
+knocked_out:
+  images: ["data/images/alex/alex_knocked_out_0.png"]
+  directions: [[1, 0]]
+  offset: [-55, -10]
+  loop: none
+  speed: still
+  movement: still
+  period: 0.5
+
+
+# kick_high:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[0,2], [1,2], [3,2], ]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# kick_med_high:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[0,2], [1,2], [2, 2], [3,2], ]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# kick_jump:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[4,2]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# roll:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[5,2], [6,2], [7, 2], [8,2], ]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# swing:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[0,3], [1,3], [2,3], ]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# swing_run:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[3,3]]
+#   loop: none
+#   speed: still
+#   movement: still
+#   finish: run
+
+# stand_hold:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[4,3]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# walk_hold:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[5,3], [6,3]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# run_hold:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames:  [[5,3], [6,3], [7,3]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# throw_hold: 
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[8,3], [9,3]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# jump_hold:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[10,3]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# hit_forward_hard:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[0,4]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# hit_forward:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[1,4]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# hit_back:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[2,4]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# hit_back_hard:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[3,4]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# fall_forward:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[4,4]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# pant: 
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[5,4], [6,4]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# down:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[7,4]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# down_eyes:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[8,4]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# pose_finger_up_mouth_straight:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[0,5]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# pose_finger_up_mouth_open:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[1,5]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# pose_not_aggressive:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[2,5]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# pose_look_behind:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[3,5]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# pose_look_squint:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[4,5]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# pose_look_squint_front:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[5,5]]
+#   loop: none
+#   speed: still
+#   movement: still    
+
+# pose_look_down:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[6,5]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# pose_look_hard:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[7,5]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# sit_finger_up_mouth_straight:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[0,6]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# sit_finger_up_mouth_open:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[1,6]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# sit_mouth_open:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[2,6]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# sit_look_behind:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[3,6]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# sit_look_squint:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[4,6]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# sit_look_squint_forward:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[5,6]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# sit_look_down:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[6,6]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# sit_look_down_mouth_open:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[7,6]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# sit_chew: 
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[0,7], [1,7], [2,7], [3,7], [4,7], [5,7], ]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# sit_bite_back:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[6,7]]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# stand_chew: 
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[0,8], [1,8], [2,7], [3,8], [4,8], [5,8], ]
+#   loop: none
+#   speed: still
+#   movement: still
+
+# stand_grab:
+#   images: ["data/images/alex.png"]
+#   frame_size: [39, 39]
+#   frames: [[6,8]]
+#   loop: none
+#   speed: still
+#   movement: still
+

@@ -1,0 +1,42 @@
+- duration: 10.0
+  rect: [100, 100, 320, 240]
+  start: 5.0
+- duration: 10.0
+  rect: [300, 200, 320, 240]
+  start: 10.0
+- duration: 10.0
+  rect: [300, 200, 320, 240]
+  start: 40.0
+- duration: 10.0
+  rect: [300, 200, 320, 240]
+  start: 60.0
+- duration: 10.0
+  rect: [300, 200, 320, 240]
+  start: 80.0
+- duration: 10.0
+  rect: [300, 200, 320, 240]
+  start: 100.0
+- duration: 10.0
+  rect: [300, 200, 320, 240]
+  start: 120.0
+- duration: 10.0
+  rect: [300, 200, 320, 240]
+  start: 140.0
+- duration: 10.0
+  rect: [300, 200, 320, 240]
+  start: 160.0
+- duration: 10.0
+  rect: [300, 200, 320, 240]
+  start: 170.0
+- duration: 10.0
+  rect: [300, 200, 320, 240]
+  start: 180.0
+- duration: 10.0
+  rect: [300, 200, 320, 240]
+  start: 190.0
+- duration: 10.0
+  rect: [300, 200, 320, 240]
+  start: 200.0
+- duration: 10.0
+  rect: [300, 200, 320, 240]
+  start: 210.0

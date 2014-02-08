@@ -1,0 +1,65 @@
+- actors:
+    alex:
+      data: data/actors/alex.yaml
+      goal: {fight: tim}
+      handler: person
+      next goal: {random: true}
+      pos: [150, 450]
+    camera:
+      goal: {watch: alex}
+      handler: camera
+      pos: [0, 0]
+      render: false
+      size: null
+    tim:
+      data: data/actors/alex.yaml
+      goal: {fight: alex}
+      handler: person
+      next goal: {random: true}
+      pos: [400, 425]
+  at: 0.0
+  background: data/images/rivercity-building2_outside2.gif
+- actors:
+    alex:
+      data: data/actors/alex.yaml
+      goal: {fight: tim}
+      handler: person
+      next goal: {random: true}
+      pos: [150, 450]
+    camera:
+      goal: {watch: alex}
+      handler: camera
+      pos: [0, 0]
+      render: false
+      size: null
+  at: 7.0
+  background: data/images/rivercity-school.gif
+- actors:
+    alex:
+      data: data/actors/alex.yaml
+      goal: {fight: tim}
+      handler: person
+      next goal: {random: true}
+      pos: [150, 450]
+    camera:
+      goal: {watch: alex}
+      handler: camera
+      pos: [0, 0]
+      render: false
+      size: null
+    tim:
+      data: data/actors/alex.yaml
+      goal: {fight: alex}
+      handler: person
+      next goal: {random: true}
+      pos: [400, 425]
+  at: 28.0
+  background: data/images/rivercity-mall.gif
+- {at: 32.0, background: data/images/rivercity-gym.gif}
+- {at: 43.0, background: data/images/rivercity-tunnelentrance.gif}
+- {at: 51.0, background: data/images/rivercity-park.gif}
+- {at: 63.5, background: data/images/rivercity-mall2.gif}
+- {at: 70.0, background: data/images/rivercity-roof.gif}
+- {at: 100.0, background: data/images/rivercity-tunnel.gif}
+- {at: 178.0, background: data/images/rivercity-mall.gif}
+- {at: 280.0, background: data/images/rivercity-roof.gif}

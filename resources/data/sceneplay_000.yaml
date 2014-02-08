@@ -1,0 +1,83 @@
+#locations:
+#- walkable
+#- unwalkable
+#- hard edges
+#  surface: slick
+#- doors/portals
+#  - location: roomX
+#  - location_position: [0, 10]
+#- hard ceiling (ceiling, prevents jumps or any other movement)
+#- soft ceiling (ceiling, but jumps can go through them)
+
+
+game:
+  initial_location: ow_high_school
+  color_key: 0
+  player_actor: actor.fighter
+
+  # Check the Random Seed to get different results
+  #TODO(g): This must be adjustable in the editor, PER SCENE, so that I can re-roll scenes and get
+  #   better results.  Then each scene can be re-rolled and that state will be saved without effecting
+  #   any other scenes!!!!!
+  random_seed: 0
+
+  total_time: 216
+
+
+window:
+  title: Rivers of Blood
+  size: [1020, 680]
+  #size: [640, 480]
+
+  # Video rendering target.  The main rendering workspace, not for helper UI.
+  viewport size: [640, 480]
+
+  # UI bar on right side of screen (for now, right is better?), runs from top to bottom of full window
+  sidebar size: [400, 680]
+
+  # UI bar beneath the video screen, stops at sidebar.  Aligns with width of the video screen
+  bottombar size: [640, 200]
+
+  # Increase in game graphics sizing
+  scale: 3.0
+
+  # Mouse pointer image
+  mouse pointer: data/ui/input/arrow_up_right_blue.png
+  mouse pointer offset: [-28, -5]
+
+
+screenplay: data/rob_screenplay.yaml
+
+
+location.ow_high_school:
+  render:
+    #- Game Background
+    #- Game Actors
+    #- Game UI
+    - Screenplay
+    - Sidebar UI
+    - Bottombar UI
+    - Popup UI
+    - Viewport UI
+
+  assets:
+    background:
+      images: ["data/images/rivercity-school.gif"]
+      #images: ["data/images/rivercity-park.gif"]
+      frames: [[0,0]]
+      loop: none
+
+      masks:
+        # Masks where there is ground to stand on.  Walls will not be ground, except
+        #   where one can stand on them.
+        walkable:
+          images: ["data/images/rivercity-school-mask.gif"]
+          #images: ["data/images/rivercity-park-mask.gif"]
+          palette:
+            0: sky
+            1: walkable
+            2: fallable
+            3: unwalkable
+            4: unknown
+            5: landable
+

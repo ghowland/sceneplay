@@ -1,0 +1,93 @@
+#TODO: Change this so that actors are constantly being re-populated per "at:" statement, will solve
+#   most of my problems.  Not as easy to type, but much easier to work with the Scene and Change Point model.
+#
+#   - Will need to add in an "add actor" button, and then select the animation spec, and other stuff
+
+- at: 0.0
+  background: data/images/rivercity-building2_outside2.gif
+
+  actors:
+    camera:
+      handler: camera
+      render: false
+      pos: [0, 0]
+      size: null
+      goal:
+        watch: alex
+
+    alex:
+      handler: person
+      data: data/actors/alex.yaml
+      pos: [150,450]
+      goal:
+        fight: tim
+      next goal:
+        random: true
+
+    tim:
+      handler: person
+      data: data/actors/alex.yaml
+      pos: [400,425]
+      goal:
+        fight: alex
+      next goal:
+        random: true
+        # follow: alex
+        # pattern: circle
+
+# Reset all actors per scene.  Scene changes are new.  Specify when the scene changes occur with AT.
+#   Best to precise with scene changes, for now.  Can make it more flexible once Im in the new method.
+
+# Current actor definitions are still good for the final output of rendering the actors, the Behaviour
+#   Handler code (person, etc) will determine what the actor is doing based on the goals, and then generate
+#   each actor pos/action/data/etc.
+
+# Name the scenes, for easy of editing and scrolling through things once I have developed the UI modes.
+
+
+
+- at: 7.0
+  background: data/images/rivercity-school.gif
+  actors:
+    alex:
+      data: data/actors/alex.yaml
+      pos: [150,450]
+      handler: person
+      goal:
+        fight: tim
+      next goal:
+        random: true
+
+- at: 28.0
+  background: data/images/rivercity-mall.gif
+
+- at: 32.0
+  background: data/images/rivercity-gym.gif
+
+- at: 43.0
+  background: data/images/rivercity-tunnelentrance.gif
+
+
+- at: 51.0
+  background: data/images/rivercity-park.gif
+
+- at: 63.5
+  background: data/images/rivercity-mall2.gif
+
+# Dad
+- at: 70.0
+  background: data/images/rivercity-roof.gif
+
+# Fight
+- at: 100.0
+  background: data/images/rivercity-tunnel.gif
+
+
+# Thinking back
+- at: 178.0
+  background: data/images/rivercity-mall.gif
+
+
+- at: 280.0
+  background: data/images/rivercity-roof.gif
+

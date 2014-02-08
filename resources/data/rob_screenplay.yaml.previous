@@ -1,0 +1,307 @@
+- actors:
+    alex:
+      data: data/actors/alex.yaml
+      goal:
+      - go: [358, 399]
+      - go: [583, 441]
+      handler: person
+      next goal: {random: true}
+      pos: [150, 450]
+    camera:
+      goal:
+      - go: [237, 414]
+        watch: alex
+      handler: camera
+      pos: [0, 0]
+      render: false
+      size: null
+    charlie:
+      data: data/actors/alex.yaml
+      goal:
+      - {random: 'true'}
+      handler: person
+      pos: [378, 361]
+    todd:
+      data: data/actors/alex.yaml
+      goal:
+      - {fight: alex}
+      - {fight: alex}
+      - {random: '1'}
+      handler: person
+      pos: [550, 471]
+  at: 0.0
+  background: data/images/rivercity-building2_outside2.gif
+  state_count: 0
+- actors:
+    andy:
+      data: data/actors/alex.yaml
+      goal:
+      - {fight: bob}
+      - go: [569, 439]
+      - go: [113, 442]
+      - go: [517, 428]
+      - go: [187, 356]
+      - go: [506, 381]
+      handler: person
+      pos: [587, 403]
+    bob:
+      data: data/actors/alex.yaml
+      goal:
+      - {fight: ian}
+      - go: [67, 461]
+      - {fight: tony}
+      - {random: '1'}
+      handler: person
+      pos: [70, 429]
+    ian:
+      data: data/actors/alex.yaml
+      goal:
+      - {fight: sean}
+      - go: [555, 427]
+      - {fight: andy}
+      handler: person
+      pos: [456, 416]
+    rob:
+      data: data/actors/alex.yaml
+      goal:
+      - {follow: tony}
+      handler: person
+      pos: [244, 449]
+    sean:
+      data: data/actors/alex.yaml
+      goal:
+      - {fight: rob}
+      - go: [217, 456]
+      - {fight: bob}
+      - {random: '1'}
+      handler: person
+      pos: [531, 458]
+    tom:
+      data: data/actors/alex.yaml
+      goal:
+      - {fight: ian}
+      - go: [483, 454]
+      - {fight: bob}
+      - {random: '1'}
+      handler: person
+      pos: [346, 449]
+    tony:
+      data: data/actors/alex.yaml
+      goal:
+      - {random: 'true'}
+      handler: person
+      pos: [181, 463]
+  at: 7.0
+  background: data/images/rivercity-school.gif
+  state_count: 1
+- actors:
+    alex:
+      data: data/actors/alex.yaml
+      goal:
+      - {fight: tim}
+      handler: person
+      next goal: {random: true}
+      pos: [150, 450]
+    camera:
+      goal:
+      - {watch: alex}
+      handler: camera
+      pos: [0, 0]
+      render: false
+      size: null
+    tim:
+      data: data/actors/alex.yaml
+      goal:
+      - {fight: alex}
+      handler: person
+      next goal: {random: true}
+      pos: [400, 425]
+  at: 28.0
+  background: data/images/rivercity-mall.gif
+  state_count: 2
+- actors:
+    barb:
+      data: data/actors/alex.yaml
+      goal:
+      - go: [527, 453]
+      - go: [312, 467]
+      - go: [579, 468]
+      - go: [605, 464]
+      - go: [598, 389]
+      - height: 45
+        jump: [493, 461]
+      handler: person
+      pos: [100, 456]
+  at: 32.0
+  background: data/images/rivercity-gym.gif
+  state_count: 3
+- actors:
+    loopy:
+      data: data/actors/alex.yaml
+      goal:
+      - {random: 'true'}
+      handler: person
+      pos: [219, 433]
+    murphy:
+      data: data/actors/alex.yaml
+      goal:
+      - go: [45, 454]
+      - go: [394, 436]
+      handler: person
+      pos: [176, 355]
+    teddy:
+      data: data/actors/alex.yaml
+      goal:
+      - go: [300, 434]
+      - height: 66
+        jump: [401, 459]
+      handler: person
+      pos: [172, 373]
+  at: 43.0
+  background: data/images/rivercity-tunnelentrance.gif
+  state_count: 4
+- actors:
+    barf:
+      data: data/actors/alex.yaml
+      goal:
+      - go: [229, 392]
+      - go: [27, 471]
+      - go: [612, 436]
+      handler: person
+      pos: [580, 379]
+    joe:
+      data: data/actors/alex.yaml
+      goal:
+      - go: [125, 468]
+      - height: 30
+        jump: [286, 469]
+      - height: 20
+        jump: [427, 399]
+      - height: 45
+        jump: [482, 315]
+      - height: 45
+        jump: [149, 381]
+      - go: [509, 447]
+      - height: 45
+        jump: [197, 400]
+      - {fight: barf}
+      handler: person
+      pos: [73, 401]
+  at: 51.0
+  background: data/images/rivercity-park.gif
+  state_count: 5
+- actors:
+    barf:
+      data: data/actors/alex.yaml
+      goal:
+      - go: [629, 438]
+      handler: person
+      pos: [36, 445]
+  at: 63.5
+  background: data/images/rivercity-mall2.gif
+  state_count: 6
+- actors:
+    hogarth:
+      data: data/actors/alex.yaml
+      goal:
+      - {fight: sean}
+      - go: [572, 437]
+      - {fight: sean}
+      - {fight: sean}
+      - {follow: sean}
+      handler: person
+      pos: [108, 449]
+    john:
+      data: data/actors/alex.yaml
+      goal: []
+      handler: person
+      pos: [558, 413]
+    lomzo:
+      data: data/actors/alex.yaml
+      goal:
+      - go: [459, 409]
+      handler: person
+      pos: [95, 422]
+    sean:
+      data: data/actors/alex.yaml
+      goal:
+      - {random: 'true'}
+      handler: person
+      pos: [429, 429]
+  at: 70.0
+  background: data/images/rivercity-roof.gif
+  state_count: 7
+- actors:
+    damien:
+      data: data/actors/alex.yaml
+      goal:
+      - {fight: jesse}
+      - height: 45
+        jump: [507, 415]
+      - {follow: jesse}
+      handler: person
+      pos: [131, 412]
+    jesse:
+      data: data/actors/alex.yaml
+      goal:
+      - {fight: damien}
+      - go: [77, 403]
+      - {fight: damien}
+      - {fight: damien}
+      - {random: '1'}
+      handler: person
+      pos: [560, 427]
+    limbo:
+      data: data/actors/alex.yaml
+      goal:
+      - go: [558, 425]
+      - {fight: jesse}
+      - {fight: damien}
+      - {fight: jesse}
+      - height: 45
+        jump: [504, 411]
+      - height: 45
+        jump: [204, 411]
+      - {random: '1'}
+      handler: person
+      pos: [98, 418]
+    todd:
+      data: data/actors/alex.yaml
+      goal:
+      - go: [533, 411]
+      handler: person
+      pos: [55, 397]
+  at: 100.0
+  background: data/images/rivercity-tunnel.gif
+  state_count: 8
+- actors:
+    alex:
+      data: data/actors/alex.yaml
+      goal:
+      - go: [558, 370]
+      - go: [81, 440]
+      - go: [580, 395]
+      - height: 45
+        jump: [170, 431]
+      - go: [551, 399]
+      - height: 45
+        jump: [140, 433]
+      - height: 45
+        jump: [95, 418]
+      - {random: '1'}
+      handler: person
+      next goal: {random: true}
+      pos: [53, 396]
+    john:
+      data: data/actors/alex.yaml
+      goal:
+      - {follow: alex}
+      handler: person
+      pos: [150, 450]
+  at: 178.0
+  background: data/images/rivercity-mall.gif
+  state_count: 9
+- actors: {}
+  at: 280.0
+  background: data/images/rivercity-roof.gif
+  state_count: 10

@@ -1,0 +1,103 @@
+# ScenePlayTime Data Version
+version: 1
+
+# Scenes
+scenes:
+  - name: Contact
+    duration: 35.0
+    background: data/images/background_town.png
+
+    actors:
+      # Avatars
+      hero_guy_1:
+        action data: data/spacerpg/action/hero_guy_1.yaml
+      hero_guy_2:
+        action data: data/spacerpg/action/hero_guy_2.yaml
+      hero_girl:
+        action data: data/spacerpg/action/hero_girl.yaml
+
+      # Talking Heads
+      hero_guy_1_face:
+        action data: data/spacerpg/action/hero_guy_1_face.yaml
+      hero_guy_2_face:
+        action data: data/spacerpg/action/hero_guy_2_face.yaml
+      hero_girl_face:
+        action data: data/spacerpg/action/hero_girl_face.yaml
+      enemy_face:
+        action data: data/spacerpg/action/enemy_face.yaml
+
+      # Ships
+      enemy_ship_main:
+        action data: data/spacerpg/action/enemy_ship_main.yaml
+      enemy_ship_left:
+        action data: data/spacerpg/action/enemy_ship_left.yaml
+      enemy_ship_right:
+        action data: data/spacerpg/action/enemy_ship_right.yaml
+      hero_ship:
+        action data: data/spacerpg/action/hero_ship.yaml
+
+  - name: Space Fight
+    duration: 150.0
+    background: data/images/background_nebula.png
+
+    actors:
+      # Hero Ship
+      hero_ship:
+        action data: data/spacerpg/action/hero_ship.yaml
+
+      # Talking Heads
+      hero_guy_1_face:
+        action data: data/spacerpg/action/hero_guy_1_face.yaml
+      hero_guy_2_face:
+        action data: data/spacerpg/action/hero_guy_1_face.yaml
+      hero_girl_face:
+        action data: data/spacerpg/action/hero_girl_face.yaml
+      enemy_face:
+        action data: data/spacerpg/action/enemy_face.yaml
+
+      # Enemy Ships
+      enemy_ship_small_1:
+        action data: data/spacerpg/action/enemy_ship_small.yaml
+      enemy_ship_small_2:
+        action data: data/spacerpg/action/enemy_ship_small.yaml
+      enemy_ship_medium_1:
+        action data: data/spacerpg/action/enemy_ship_medium.yaml
+      enemy_ship_medium_2:
+        action data: data/spacerpg/action/enemy_ship_medium.yaml
+      enemy_ship_large:
+        action data: data/spacerpg/action/enemy_ship_large.yaml
+
+      # FX
+      explosion:
+        action data: data/spacerpg/action/explosion.yaml
+
+
+  - name: Home Coming
+    duration: 35.0
+    background: data/images/background_town.png
+
+    actors:
+      # Avatars
+      hero_guy_1:
+        action data: data/spacerpg/action/hero_guy_1.yaml
+      hero_guy_2:
+        action data: data/spacerpg/action/hero_guy_2.yaml
+      hero_girl:
+        action data: data/spacerpg/action/hero_girl.yaml
+
+      # Talking Heads
+      hero_guy_1_face:
+        action data: data/spacerpg/action/hero_guy_1_face.yaml
+      hero_guy_2_face:
+        action data: data/spacerpg/action/hero_guy_2_face.yaml
+      hero_girl_face:
+        action data: data/spacerpg/action/hero_girl_face.yaml
+      enemy_face:
+        action data: data/spacerpg/action/enemy_face.yaml
+
+      # Ships
+      hero_ship:
+        action data: data/spacerpg/action/hero_ship.yaml
+      enemy_ship:
+        action data: data/spacerpg/action/enemy_ship.yaml
+
