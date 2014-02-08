@@ -20,3 +20,5 @@ This is going to be confusing if you aren't me, as I didn't make this to be easy
 
 Consider this "as is" software that probably wont help you.  This will change as I get more time to work on this project in the future.
 
+![Example Screenshot](https://raw2.github.com/ghowland/sceneplay/master/output/output.png)
+
