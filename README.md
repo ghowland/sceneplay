@@ -22,3 +22,7 @@ Consider this "as is" software that probably wont help you.  This will change as
 
 ![Example Screenshot](https://raw2.github.com/ghowland/sceneplay/master/output/output.png)
 
+Here's a video of it playing through:
+
+http://www.youtube.com/watch?v=T3_KQlIdjt8
+
